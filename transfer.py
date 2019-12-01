@@ -1,7 +1,8 @@
 import os
-
+max_height=1040
+max_weight=2008
 def create_str_to_txt(name, data):
-    path_file_name = 'C:\\Users\\YXH\\Desktop\\课程\\机器学习\\大作业\\sample\\trans\\%s.txt' % name
+    path_file_name = './trans/%s.txt' % name
     if not os.path.exists(path_file_name):
         with open(path_file_name, "w") as f:
             print(f)
@@ -28,17 +29,17 @@ def read(filename):
             width = float(lst[4]) - float(lst[2])
             height = float(lst[5]) - float(lst[3])
 
-            lst_new.append(x_center / 2000)
-            lst_new.append(y_center / 2000)
-            lst_new.append(width / 2000)
-            lst_new.append(height / 2000)
+            lst_new.append(round(x_center / max_weight,5))
+            lst_new.append(round(y_center / max_height,5))
+            lst_new.append(round(width / max_weight,5))
+            lst_new.append(round(height / max_height,5))
 
             input =str(lst_new).replace("[","").replace("]","").replace(","," ")
             print(input)
             name = filename
             create_str_to_txt(name, input)
 
-os.chdir("C:\\Users\\YXH\\Desktop\\课程\\机器学习\\大作业\\sample\\core_3000\\Annotation")
+os.chdir("./Anno_core_coreless_battery_sub_2000_500")
 for filename in os.listdir():
     print(filename)
     read(filename)
