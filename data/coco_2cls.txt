@@ -1,0 +1,5 @@
+./data/coco/images/00004884.jpg
+./data/coco/images/00004885.jpg
+./data/coco/images/00004785.jpg
+
+
