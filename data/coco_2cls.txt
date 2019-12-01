@@ -1,5 +1,5 @@
-./data/coco/images/00004884.jpg
-./data/coco/images/00004885.jpg
-./data/coco/images/00004785.jpg
+./data/coco/images/core_battery00004884.jpg
+./data/coco/images/core_battery00004885.jpg
+./data/coco/images/coreless_battery00004785.jpg
 
 
