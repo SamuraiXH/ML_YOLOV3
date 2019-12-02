@@ -2,14 +2,15 @@ import os
 max_height=1040
 max_weight=2008
 def create_str_to_txt(name, data):
-    path_file_name = './trans/%s.txt' % name
+    path_file_name = '/root/test/trans/%s' % name
     if not os.path.exists(path_file_name):
         with open(path_file_name, "w") as f:
             print(f)
 
     with open(path_file_name, "a") as f:
-        f.write(data)
-        f.write('\r')
+        if (data != ""):
+            f.write(data)
+            f.write('\n')
 
 def read(filename):
     with open(filename, encoding='utf-8') as f:
@@ -23,7 +24,11 @@ def read(filename):
                 lst_new.append(1)
             elif lst[1] == '不带电芯充电宝':
                 lst_new.append(0)
-
+            else:
+                input = ""
+                name = filename
+                create_str_to_txt(name,input)
+                continue
             x_center = (float(lst[2]) + float(lst[4])) / 2
             y_center = (float(lst[3]) + float(lst[5])) / 2
             width = float(lst[4]) - float(lst[2])
@@ -39,7 +44,7 @@ def read(filename):
             name = filename
             create_str_to_txt(name, input)
 
-os.chdir("./Anno_core_coreless_battery_sub_2000_500")
+os.chdir("/root/test/Anno_core_coreless_battery_sub_2000_500")
 for filename in os.listdir():
     print(filename)
     read(filename)
