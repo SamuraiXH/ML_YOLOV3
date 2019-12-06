@@ -97,20 +97,20 @@ def test(cfg,
             #    [file.write('%11.5g' * 7 % tuple(x) + '\n') for x in pred]
 
             # Append to pycocotools JSON dictionary
-            if save_json:
-                # [{"image_id": 42, "category_id": 18, "bbox": [258.15, 41.29, 348.26, 243.78], "score": 0.236}, ...
-                image_id = int(Path(paths[si]).stem.split('_')[-1])
-                box = pred[:, :4].clone()  # xyxy
-                scale_coords(imgs[si].shape[1:], box, shapes[si])  # to original shape
-                box = xyxy2xywh(box)  # xywh
-                box[:, :2] -= box[:, 2:] / 2  # xy center to top-left corner
-                for di, d in enumerate(pred):
-                    jdict.append({'image_id': image_id,
-                                  'category_id': coco91class[int(d[6])],
-                                  'bbox': [floatn(x, 3) for x in box[di]],
-                                  'score': floatn(d[4], 5)})
-
-            # Clip boxes to image bounds
+            #if save_json:
+            #    # [{"image_id": 42, "category_id": 18, "bbox": [258.15, 41.29, 348.26, 243.78], "score": 0.236}, ...
+            #    image_id = int(Path(paths[si]).stem.split('_')[-1])
+            #    box = pred[:, :4].clone()  # xyxy
+            #    scale_coords(imgs[si].shape[1:], box, shapes[si])  # to original shape
+            #    box = xyxy2xywh(box)  # xywh
+            #    box[:, :2] -= box[:, 2:] / 2  # xy center to top-left corner
+            #    for di, d in enumerate(pred):
+            #        jdict.append({'image_id': image_id,
+            #                      'category_id': coco91class[int(d[6])],
+            #                      'bbox': [floatn(x, 3) for x in box[di]],
+            #                      'score': floatn(d[4], 5)})
+			#
+            ## Clip boxes to image bounds
             clip_coords(pred, (height, width))
 
             # Assign all predictions as incorrect
