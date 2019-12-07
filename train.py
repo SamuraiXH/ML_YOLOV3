@@ -211,7 +211,7 @@ def train():
     nb = len(dataloader)
     maps = np.zeros(nc)  # mAP per class
     # torch.autograd.set_detect_anomaly(True)
-    results = (0, 0, 0, 0, 0, 0, 0)  # 'P', 'R', 'mAP', 'F1', 'val GIoU', 'val Objectness', 'val Classification'
+    results = (0, 0, 0, 0, 0, 0, 0)  # 'P', 'mAP', 'area', 'F1', 'val GIoU', 'val Objectness', 'val Classification'
     t0 = time.time()
     print('Starting %s for %g epochs...' % ('prebias' if opt.prebias else 'training', epochs))
     for epoch in range(start_epoch, epochs):  # epoch ------------------------------------------------------------------
@@ -327,7 +327,7 @@ def train():
         if tb_writer:
             x = list(mloss) + list(results)
             titles = ['GIoU', 'Objectness', 'Classification', 'Train loss',
-                      'Precision', 'Recall', 'mAP', 'F1', 'val GIoU', 'val Objectness', 'val Classification']
+                      'Precision', 'mAP', 'area', 'F1', 'val GIoU', 'val Objectness', 'val Classification']
             for xi, title in zip(x, titles):
                 tb_writer.add_scalar(title, xi, epoch)
 

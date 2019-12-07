@@ -12,8 +12,13 @@ tqdm
 ## 2.总流程
 ### 迁移学习
 python3 train.py --data data/coco_2cls.data --cfg cfg/yolov3-spp-2cls.cfg --weights weights/converted.pt --transfer
+
+(下边这句不对，会报维度的问题)
+python3 train.py --data data/coco_2cls.data --cfg cfg/yolov3-spp-2cls.cfg --weights weights/last.pt --transfer
 ### 测试自己的模型
 python3 test.py --data data/coco_1cls.data --weights weights/ultralytics49.pt
+
+python3 test.py --weights weights/last.pt --cfg cfg/yolov3-spp-2cls.cfg --data data/coco_2cls.data
 ### 检测并且输出结果：
 python3 detect.py --weights weights/last.pt --cfg cfg/yolov3-spp-1cls.cfg --data data/coco_1cls.data
 ## 3.数据集中图片的规格
@@ -81,6 +86,10 @@ echo 1 > /proc/sys/vm/drop_caches
 echo 2 > /proc/sys/vm/drop_caches
 
 echo 3 > /proc/sys/vm/drop_caches
+## 11.常见问题
+（1）执行test.py时，使用原默认参数，可以不加任何参数正常运行，这是要在coco_*.data中配置正确的图片路径，
+并且images和labels到一一对应，否则会报奇怪的错误
+
 
 
 
